@@ -34,6 +34,11 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'accounts',
     'game',
+    'rest_framework',
+    # 'crispy_forms',
+    # 'crispy_bootstrap4',
+    'drf_spectacular',
+    'rest_framework.authtoken',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
