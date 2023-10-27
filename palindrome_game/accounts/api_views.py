@@ -2,26 +2,29 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
-from django.db.models import Q
+
 
 
 class UserCrudAPIView(APIView):
 
     def post(self, request):
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        email = request.POST.get('email')
-        first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
+        try:
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            email = request.POST.get('email')
+            first_name = request.POST.get('first_name')
+            last_name = request.POST.get('last_name')
 
-        user, created = User.objects.get_or_create(username=username, email=email, first_name=first_name, last_name=last_name)
-        user.set_password(password)
-        if created:
-            user.save()
-            token = Token.objects.create(user=user)
-            return Response({'message': 'User created', 'user': user.username, 'token': token.key})
-        else:
-            return Response({'message': 'User already exists'})
+            user, created = User.objects.get_or_create(username=username, email=email, first_name=first_name, last_name=last_name)
+            user.set_password(password)
+            if created:
+                user.save()
+                token = Token.objects.create(user=user)
+                return Response({'message': 'User created', 'user': user.username, 'token': token.key})
+            else:
+                return Response({'message': 'User already exists'})
+        except:
+            return Response({'message': 'Invalid data'})
         
         
     def put(self, request):
