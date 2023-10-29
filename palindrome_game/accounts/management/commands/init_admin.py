@@ -13,6 +13,6 @@ class Command(BaseCommand):
             user.is_staff = True
             user.save()
             
-            print('Admin account created (username: admin1, password: admin1).)')
+            print(f'Admin account created (username: {self.username}, password: {self.password}).)')
         else:
             print('Admin account already exists.')
