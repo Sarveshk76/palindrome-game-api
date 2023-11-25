@@ -1,5 +1,5 @@
 # Palindrome Game API
-A Django REST API that provides endpoints for playing a palindrome game.
+A Django REST API that provides endpoints for playing a palindrome game.([Demo link](https://sarveshk76.pythonanywhere.com/swagger/))
 
 ## Description
 1. **User APIs(POST, PUT, DELETE /accounts/api/v1/user/)**:
